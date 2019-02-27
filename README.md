@@ -2,7 +2,7 @@
 
 1. Реализуйте поиск подстроки в строке.
 ```cpp
-size_t strstr(const std::string& str, const std::string& substr);
+size_t str_find(const std::string& str, const std::string& substr);
 ```
 
 2. Реализуйте поиск подстроки в строке алгоритмом Рабина—Карпа.

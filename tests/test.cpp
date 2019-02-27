@@ -36,7 +36,7 @@ TEST(Substring, Strstr) {
   std::vector<TestCase> tests;
   LoadTests("../misc/tests.txt", &tests);
   for (const auto& test_case : tests) {
-    EXPECT_EQ(test_case.found, strstr(test_case.input, test_case.find))
+    EXPECT_EQ(test_case.found, str_find(test_case.input, test_case.find))
         << "find " << test_case.find << " in " << test_case.input;
   }
 }
