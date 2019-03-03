@@ -4,8 +4,8 @@
 
 
 /// Функция хеширования для алгоритма Рабина-Карпа
-unsigned long int stupid_hash(const std::string &str) {
-    unsigned long int res = 0;
+size_t stupid_hash(const std::string &str) {
+    size_t res = 0;
     size_t len = str.length();
     std::hash<char> hashFunc;
     for (size_t ind = 0; ind < len; ind++) {
@@ -15,7 +15,7 @@ unsigned long int stupid_hash(const std::string &str) {
 }
 
 /// Функция сдвига хеша
-unsigned long int roll_hash(unsigned long int prevHash, const char prevChar, const char nextChar) {
+size_t roll_hash(size_t prevHash, const char prevChar, const char nextChar) {
     prevHash ^= prevChar;
     prevHash ^= nextChar;
     return prevHash;
@@ -38,14 +38,15 @@ size_t str_find(const std::string &str, const std::string &substr) {
     return static_cast<size_t>(-1);
 }
 
-///Поиск первой подстроки в строке алгоритмом Рабина—Карпа с использованием кольцевого хеша
+///Поиск первой подстроки в строке алгоритмом Рабина—Карпа
+///С использованием кольцевого хеша
 size_t rk_find(const std::string &str, const std::string &substr) {
-    unsigned long int subHash = stupid_hash(substr);
+    size_t subHash = stupid_hash(substr);
     size_t subLen = substr.length();
     size_t selfLen = str.length();
     if (subLen > selfLen) return static_cast<size_t>(-1);
-    unsigned long int steps = selfLen - subLen + 1;
-    unsigned long int mainHash = stupid_hash(str.substr(0, subLen));
+    size_t steps = selfLen - subLen + 1;
+    size_t mainHash = stupid_hash(str.substr(0, subLen));
     for (size_t ind = 1; ind <= steps; ind++) {
         if (mainHash == subHash) {
             if (str.substr(ind - 1, subLen) == substr)
