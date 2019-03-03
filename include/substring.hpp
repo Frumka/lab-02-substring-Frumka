@@ -3,4 +3,17 @@
 #ifndef INCLUDE_HEADER_HPP_
 #define INCLUDE_HEADER_HPP_
 
+#include <string>
+#include <functional>
+#include <vector>
+
+/// Поиск подстроки в тупую
+size_t str_find(const std::string &str, const std::string &substr);
+
+///Поиск подстроки в строке алгоритмом Рабина—Карпа
+size_t rk_find(const std::string &str, const std::string &substr);
+
+/// Поиск подстроки в строке алгоритмом Кнута—Морриса—Пратта
+size_t kmp_find(const std::string &str, const std::string &substr);
+
 #endif // INCLUDE_HEADER_HPP_
